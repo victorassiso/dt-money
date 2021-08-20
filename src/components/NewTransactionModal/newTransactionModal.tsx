@@ -11,6 +11,7 @@ interface NewTransactionModalProps {
 }
 export interface RadioBoxProps {
   isSelected: boolean;
+  activeColor: 'green' | 'red';
 }
 
 export function NewTransactionModal({ isOpen, onRequestClose}: NewTransactionModalProps) {
@@ -46,6 +47,7 @@ export function NewTransactionModal({ isOpen, onRequestClose}: NewTransactionMod
             type="button"
             onClick={() => setTransactionType('deposit')}
             isSelected={transactionType === 'deposit'}
+            activeColor='green'
             >
               <img src={incomeImg} alt="deposit" />
               <p>Entrada</p>
@@ -54,6 +56,7 @@ export function NewTransactionModal({ isOpen, onRequestClose}: NewTransactionMod
             type="button"
             onClick={() => setTransactionType('withdraw')}
             isSelected={transactionType === 'withdraw'}
+            activeColor='red'
             >
               <img src={outcomeImg} alt="withdraw" />
               <p>Saída</p>

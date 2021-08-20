@@ -1,5 +1,6 @@
 import styled from 'styled-components';
-import {RadioBoxProps } from './newTransactionModal'
+import {RadioBoxProps } from './newTransactionModal';
+import {transparentize} from 'polished';
 
 export const Container = styled.form`
   h2 {
@@ -55,6 +56,11 @@ export const Container = styled.form`
   }  
 `;
 
+const colors = {
+  green: '#33CC95',
+  red: '#E52E4D'
+};
+
 export const RadioBox = styled.button<RadioBoxProps>`
   display: flex;
   align-items: center;
@@ -67,7 +73,10 @@ export const RadioBox = styled.button<RadioBoxProps>`
   border-radius: 0.25rem;
   color: var(--text-title);
 
-  background: ${(props) => props.isSelected ? '#12A454' : 'transparent'};
+  background: ${(props) => props.isSelected
+    ? transparentize(0.9, colors[props.activeColor])
+    : 'transparent'
+  };
 
   img{
     margin-right: 1rem;
