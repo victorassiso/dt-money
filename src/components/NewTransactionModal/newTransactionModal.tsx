@@ -5,7 +5,8 @@ import outcomeImg from '../../assets/outcome.svg'
 import closeImg from '../../assets/close.svg'
 import { FormEvent, useState } from 'react';
 import { api } from '../../services/api';
-import { Transaction } from '../Statement/statement';
+import { Transaction } from '../../transactionsContext';
+
 interface NewTransactionModalProps {
   isOpen: boolean;
   onRequestClose: () => void;
