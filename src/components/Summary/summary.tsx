@@ -7,7 +7,7 @@ import { TransactionsContext } from "../../transactionsContext";
 
 
 export function Summary() {
-  const transactions = useContext(TransactionsContext);
+  const { transactions } = useContext(TransactionsContext);
   console.log(transactions)
 
   return (
