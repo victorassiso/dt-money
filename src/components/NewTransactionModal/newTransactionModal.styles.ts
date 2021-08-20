@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import {RadioBoxProps } from './newTransactionModal'
 
 export const Container = styled.form`
   h2 {
@@ -33,27 +34,6 @@ export const Container = styled.form`
     display: flex;
     gap: 0.5rem;
   
-    button {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 100%;
-      border: 1px solid var(--input-border);
-      padding: 1rem 0;
-      font-size: 1rem;
-      font-weight: 500;
-      border-radius: 0.25rem;
-
-      img{
-        padding-right: 1rem;
-      }
-
-      transition: filter 0.2s;
-
-      &:hover {
-        filter: brightness(0.9);
-      }
-    }
   }
   
   button[type="submit"] {
@@ -72,7 +52,31 @@ export const Container = styled.form`
     &:hover {
       filter: brightness(0.9);
     }
+  }  
+`;
+
+export const RadioBox = styled.button<RadioBoxProps>`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  border: 1px solid var(--input-border);
+  padding: 1rem 0;
+  font-size: 1rem;
+  font-weight: 500;
+  border-radius: 0.25rem;
+  color: var(--text-title);
+
+  background: ${(props) => props.isSelected ? '#12A454' : 'transparent'};
+
+  img{
+    margin-right: 1rem;
   }
-  
-  
+
+  transition: filter 0.2s;
+
+  &:hover {
+    border-color: rgba(var(--input-border), 0.5)
+  }
+
 `;
