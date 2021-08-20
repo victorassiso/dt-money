@@ -4,7 +4,8 @@ import incomeImg from '../../assets/income.svg'
 import outcomeImg from '../../assets/outcome.svg'
 import closeImg from '../../assets/close.svg'
 import { FormEvent, useState } from 'react';
-
+import { api } from '../../services/api';
+import { Transaction } from '../Statement/statement';
 interface NewTransactionModalProps {
   isOpen: boolean;
   onRequestClose: () => void;
@@ -14,28 +15,23 @@ export interface RadioBoxProps {
   activeColor: 'green' | 'red';
 }
 
-interface Transaction {
-  title: string;
-  value: number;
-  type: 'deposit' | 'withdraw';
-  category: string;
-}
-
 export function NewTransactionModal({ isOpen, onRequestClose}: NewTransactionModalProps) {
   const [title, setTitle] = useState<Transaction["title"]>('');
-  const [value, setValue] = useState<Transaction["value"]>(0);
+  const [amount, setAmount] = useState<Transaction["amount"]>(0);
   const [type, setType] = useState<Transaction["type"]>('deposit');
   const [category, setCategory] = useState<Transaction["category"]>('');  
   
   function handleCreateNewTransaction(event: FormEvent) {
     event.preventDefault();
 
-    console.log({
+    const data ={
       title,
-      value,
+      amount,
       type,
       category
-    })
+    };
+
+    api.post('transactions', data)
   }
 
   return (
@@ -63,8 +59,8 @@ export function NewTransactionModal({ isOpen, onRequestClose}: NewTransactionMod
         <input
           type="number"
           placeholder="Valor"
-          value={value}
-          onChange={event => setValue(Number(event.target.value))}
+          value={amount}
+          onChange={event => setAmount(Number(event.target.value))}
         />
         
         <div>
