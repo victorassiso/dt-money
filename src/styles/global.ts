@@ -13,6 +13,9 @@ export const GlobalStyle = createGlobalStyle`
     
     --text-title: #363F5F;
     --text-body: #969CB3;
+
+    --input-background: #e7e9ee;
+    --input-border: #d7d7d7;
   };
   
   * {
@@ -76,6 +79,20 @@ export const GlobalStyle = createGlobalStyle`
   padding: 3rem;
   position: relative;
   border-radius: 0.25rem;
+}
+
+.closeModal {
+  border: 0;
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  background: transparent;
+
+  transition: filter 0.2s;
+
+  &:hover {
+    filter: brightness(0.8);
+  }
 }
 
 `;
